@@ -11,6 +11,7 @@ import Modal from "./components/Modals/Modal";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchStudents } from "./features/students/studentsSlice";
+import { fetchTeachers } from "./features/teachers/teachersSlice";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -19,6 +20,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchStudents());
+    dispatch(fetchTeachers());
   }, [dispatch]);
 
   return (
@@ -30,10 +32,22 @@ function App() {
         </div>
         <div className="w-[80%]">
           <Routes>
-            <Route path="/" element={<Students setOpenModal={setOpenModal} />} />
-            <Route path="/students" element={<Students setOpenModal={setOpenModal} />} />
-            <Route path="/teachers" element={<Teachers />} />
-            <Route path="/class" element={<Class />} />
+            <Route
+              path="/"
+              element={<Students setOpenModal={setOpenModal} />}
+            />
+            <Route
+              path="/students"
+              element={<Students setOpenModal={setOpenModal} />}
+            />
+            <Route
+              path="/teachers"
+              element={<Teachers setOpenModal={setOpenModal} />}
+            />
+            <Route
+              path="/class"
+              element={<Class setOpenModal={setOpenModal} />}
+            />
             <Route path="/school" element={<School />} />
           </Routes>
         </div>

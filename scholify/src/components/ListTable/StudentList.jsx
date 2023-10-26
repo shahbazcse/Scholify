@@ -11,8 +11,8 @@ function StudentList({ setOpenModal }) {
           <tr>
             <th className="px-4 py-2 border-r border-b w-[8vh]">#</th>
             <th className="px-4 py-2 border-r border-b">Name</th>
-            <th className="px-4 py-2 border-r border-b">Age</th>
-            <th className="px-4 py-2 border-b">Grade</th>
+            <th className="px-4 py-2 border-r border-b">Grade</th>
+            <th className="px-4 py-2 border-b">Age</th>
           </tr>
         </thead>
         <tbody className="bg-[#FFFFFF]">
@@ -29,8 +29,8 @@ function StudentList({ setOpenModal }) {
                   {name}
                 </span>
               </td>
-              <td className="px-4 py-2 border-r border-b">{age}</td>
-              <td className="px-4 py-2 border-b">{grade}</td>
+              <td className="px-4 py-2 border-r border-b">{grade}</td>
+              <td className="px-4 py-2 border-b">{age}</td>
             </tr>
           ))}
         </tbody>

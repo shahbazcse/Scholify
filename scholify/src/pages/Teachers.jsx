@@ -1,10 +1,10 @@
 import React from "react";
 import TeacherList from "../components/ListTable/TeacherList";
 
-function Teacher(props) {
+function Teacher({setOpenModal}) {
   return (
     <div className="mt-4 ml-8">
-      <TeacherList />
+      <TeacherList setOpenModal={setOpenModal} />
     </div>
   );
 }
