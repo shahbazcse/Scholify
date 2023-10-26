@@ -4,6 +4,7 @@ const initialState = {
   filterClass: "",
   filterGender: "",
   filterSortBy: "",
+  filterQuery: "",
 };
 
 export const classSlice = createSlice({
@@ -15,9 +16,12 @@ export const classSlice = createSlice({
       state.filterGender = action.payload.filterGender;
       state.filterSortBy = action.payload.filterSortBy;
     },
+    updateQuery: (state, action) => {
+      state.filterQuery = action.payload;
+    },
   },
 });
 
-export const { updateFilters } = classSlice.actions;
+export const { updateFilters, updateQuery } = classSlice.actions;
 
 export default classSlice.reducer;

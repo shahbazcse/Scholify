@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function ClassList({ setOpenModal }) {
-  const { filterClass, filterGender, filterSortBy } = useSelector(
+  const { filterClass, filterGender, filterSortBy, filterQuery } = useSelector(
     (state) => state.class
   );
 
@@ -12,7 +12,9 @@ function ClassList({ setOpenModal }) {
     .filter(
       (student) =>
         (filterClass === "") | (student.grade === filterClass) &&
-        (filterGender === "") | (student.gender === filterGender)
+        (filterGender === "") | (student.gender === filterGender) &&
+        (filterQuery === "") |
+          student.name.toUpperCase().includes(filterQuery?.toUpperCase())
     )
     .sort((a, b) =>
       filterSortBy === "name"

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFilters } from "../../features/class/classSlice";
+import { updateFilters, updateQuery } from "../../features/class/classSlice";
 
 function FilterBar() {
   const dispatch = useDispatch();
 
-  const { filterClass, filterGender, filterSortBy } = useSelector(
+  const { filterClass, filterGender, filterSortBy, filterQuery } = useSelector(
     (state) => state.class
   );
 
@@ -13,10 +13,12 @@ function FilterBar() {
     filterClass,
     filterGender,
     filterSortBy,
+    filterQuery,
   });
 
   useEffect(() => {
     dispatch(updateFilters(filters));
+    dispatch(updateQuery(filters.filterQuery));
   }, [filters]);
 
   return (
@@ -78,7 +80,12 @@ function FilterBar() {
       </div>
       <div
         onClick={() =>
-          setFilters({ filterClass: "", filterGender: "", filterSortBy: "" })
+          setFilters({
+            filterClass: "",
+            filterGender: "",
+            filterSortBy: "",
+            filterQuery: "",
+          })
         }
         className="my-auto border drop-shadow-sm p-2 rounded-md bg-red-200 hover:bg-red-300 cursor-pointer"
       >
