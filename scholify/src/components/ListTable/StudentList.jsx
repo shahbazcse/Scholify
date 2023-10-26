@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
-function StudentList() {
+function StudentList({ setOpenModal }) {
   const { students } = useSelector((state) => state.students);
 
   return (
@@ -23,7 +22,10 @@ function StudentList() {
                 #{index + 1}
               </td>
               <td className="px-4 py-2 border-r border-b font-bold">
-                <span className="underline hover:cursor-pointer hover:text-blue-600">
+                <span
+                  onClick={() => setOpenModal(true)}
+                  className="underline hover:cursor-pointer hover:text-blue-600"
+                >
                   {name}
                 </span>
               </td>

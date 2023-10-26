@@ -4,7 +4,7 @@ import FilterBar from "../components/FilterBar/FilterBar";
 
 function Class() {
   return (
-    <div className="flex flex-col gap-6 mt-4 ml-16">
+    <div className="flex flex-col gap-6 mt-4 ml-8">
       <FilterBar />
       <ClassList />
     </div>

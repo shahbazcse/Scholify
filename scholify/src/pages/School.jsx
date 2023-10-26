@@ -3,7 +3,7 @@ import SchoolCard from "../components/SchoolCard/SchoolCard";
 
 function School() {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-16 mt-14 mx-24">
+    <div className="flex flex-wrap items-center justify-center gap-24 mt-14 mx-20">
       <SchoolCard />
       <SchoolCard />
       <SchoolCard />

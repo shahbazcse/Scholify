@@ -25,13 +25,13 @@ function App() {
     <div className="flex flex-col justify-center items-center h-screen">
       <TopNavBar setOpenModal={setOpenModal} />
       <div className="flex h-[90%] w-full">
-        <div className="w-[20%]">
+        <div className="w-[20%] ml-8">
           <LeftNavBar />
         </div>
         <div className="w-[80%]">
           <Routes>
-            <Route path="/" element={<Students />} />
-            <Route path="/students" element={<Students />} />
+            <Route path="/" element={<Students setOpenModal={setOpenModal} />} />
+            <Route path="/students" element={<Students setOpenModal={setOpenModal} />} />
             <Route path="/teachers" element={<Teachers />} />
             <Route path="/class" element={<Class />} />
             <Route path="/school" element={<School />} />
