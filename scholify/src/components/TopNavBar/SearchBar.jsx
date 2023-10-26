@@ -20,7 +20,7 @@ function SearchBar() {
           dispatch(updateQuery(e.target.value));
         }}
         className="p-2 outline-none border-l"
-        placeholder="Search"
+        placeholder="Search Students"
         type="text"
       />
     </div>
