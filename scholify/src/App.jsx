@@ -9,19 +9,26 @@ import Class from "./pages/Class";
 import School from "./pages/School";
 import Modal from "./components/Modals/Modal";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchStudents } from "./features/students/studentsSlice";
 import { fetchTeachers } from "./features/teachers/teachersSlice";
 
 function App() {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState({
+    showModal: false,
+    data: null,
+    formType: null,
+  });
+
+  const { students } = useSelector((state) => state.students);
+  const { teachers } = useSelector((state) => state.teachers);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchStudents());
     dispatch(fetchTeachers());
-  }, [dispatch]);
+  }, [dispatch, students, teachers]);
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
@@ -51,7 +58,9 @@ function App() {
             <Route path="/school" element={<School />} />
           </Routes>
         </div>
-        {openModal && <Modal setOpenModal={setOpenModal} />}
+        {openModal.showModal && (
+          <Modal openModal={openModal} setOpenModal={setOpenModal} />
+        )}
       </div>
     </div>
   );

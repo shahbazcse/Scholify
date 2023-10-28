@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API =
-  "https://scholifybackend.shahbazahmad12.repl.co/students";
+const API = "https://scholifybackend.shahbazahmad12.repl.co/students";
 
 export const fetchStudents = createAsyncThunk(
   "students/fetchStudents",
@@ -23,7 +22,7 @@ export const addStudentAsync = createAsyncThunk(
 export const updateStudentAsync = createAsyncThunk(
   "students/updateStudentAsync",
   async ({ id, updatedStudent }) => {
-    const response = await axios.put(`${API}/${id}`, updatedStudent);
+    const response = await axios.post(`${API}/${id}`, updatedStudent);
     return response.data;
   }
 );
@@ -41,7 +40,7 @@ const initialState = {
   status: "idle",
   error: null,
   filter: "All",
-  sortBy: "name"
+  sortBy: "name",
 };
 
 export const studentsSlice = createSlice({
@@ -53,7 +52,7 @@ export const studentsSlice = createSlice({
     },
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
-    }
+    },
   },
   extraReducers: {
     [fetchStudents.pending]: (state) => {
@@ -104,8 +103,8 @@ export const studentsSlice = createSlice({
     [deleteStudentAsync.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.error.message;
-    }
-  }
+    },
+  },
 });
 
 export const { setFilter, setSortBy } = studentsSlice.actions;

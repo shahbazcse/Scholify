@@ -1,19 +1,28 @@
 import React from "react";
+import StudentDetail from "./Student/StudentDetail";
+import EditStudentForm from "./Student/EditStudentForm";
+import AddStudentForm from "./Student/AddStudentForm";
 
-function Modal({ setOpenModal, action, formType, item }) {
+function Modal({ openModal, setOpenModal }) {
   return (
     <div
-      onClick={() => setOpenModal(false)}
       id="blur-area"
       className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex flex-col items-center justify-center"
     >
       <div className="bg-white rounded-lg mx-[6vh] w-[42vh] lg:mx-[36vh] font-[poppins]">
         <div className="flex justify-end items-center sticky top-0 z-10 drop-shadow-md opacity-[0.85] bg-white border-b border-gray-100 text-white text-right px-4 py-2 rounded-t-lg">
           <div className="text-black mx-auto text-xl font-bold">
-            {formType !== "Edit Item" && "Add"} {formType}
+            {openModal.formType === "StudentDetail" && "Student Detail"}
+            {openModal.formType === "EditStudent" && "Edit Student"}
+            {openModal.formType === "AddStudent" && "Add Student"}
           </div>
           <div
-            onClick={() => setOpenModal(false)}
+            onClick={() =>
+              setOpenModal({
+                ...openModal,
+                showModal: false,
+              })
+            }
             className="border-2 p-1 border-gray-300 rounded-full hover:bg-gray-400 cursor-pointer"
           >
             <svg
@@ -30,6 +39,18 @@ function Modal({ setOpenModal, action, formType, item }) {
         </div>
         <div className="flex flex-col mx-8 mt-8 mb-4 gap-8">
           {/* Content */}
+          {openModal.formType === "StudentDetail" && (
+            <StudentDetail openModal={openModal} setOpenModal={setOpenModal} />
+          )}
+          {openModal.formType === "EditStudent" && (
+            <EditStudentForm
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
+          )}
+          {openModal.formType === "AddStudent" && (
+            <AddStudentForm openModal={openModal} setOpenModal={setOpenModal} />
+          )}
         </div>
       </div>
     </div>

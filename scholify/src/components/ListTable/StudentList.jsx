@@ -16,21 +16,27 @@ function StudentList({ setOpenModal }) {
           </tr>
         </thead>
         <tbody className="bg-[#FFFFFF]">
-          {students.map(({ name, age, grade }, index) => (
+          {students.map((student, index) => (
             <tr key={index}>
               <td className="px-4 py-2 border-r border-b w-[8vh]">
                 #{index + 1}
               </td>
               <td className="px-4 py-2 border-r border-b font-bold">
                 <span
-                  onClick={() => setOpenModal(true)}
+                  onClick={() =>
+                    setOpenModal({
+                      showModal: true,
+                      data: student,
+                      formType: "StudentDetail",
+                    })
+                  }
                   className="underline hover:cursor-pointer hover:text-blue-600"
                 >
-                  {name}
+                  {student.name}
                 </span>
               </td>
-              <td className="px-4 py-2 border-r border-b">{grade}</td>
-              <td className="px-4 py-2 border-b">{age}</td>
+              <td className="px-4 py-2 border-r border-b">{student.grade}</td>
+              <td className="px-4 py-2 border-b">{student.age}</td>
             </tr>
           ))}
         </tbody>
