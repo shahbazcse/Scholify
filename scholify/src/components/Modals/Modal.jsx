@@ -2,6 +2,10 @@ import React from "react";
 import StudentDetail from "./Student/StudentDetail";
 import EditStudentForm from "./Student/EditStudentForm";
 import AddStudentForm from "./Student/AddStudentForm";
+import TeacherDetail from "./Teacher/TeacherDetail";
+import EditTeacherForm from "./Teacher/EditTeacherForm";
+import AddTeacherForm from "./Teacher/AddTeacherForm";
+import OptionsModal from "./OptionsModal";
 
 function Modal({ openModal, setOpenModal }) {
   return (
@@ -15,6 +19,10 @@ function Modal({ openModal, setOpenModal }) {
             {openModal.formType === "StudentDetail" && "Student Detail"}
             {openModal.formType === "EditStudent" && "Edit Student"}
             {openModal.formType === "AddStudent" && "Add Student"}
+
+            {openModal.formType === "TeacherDetail" && "Teacher Detail"}
+            {openModal.formType === "EditTeacher" && "Edit Teacher"}
+            {openModal.formType === "AddTeacher" && "Add Teacher"}
           </div>
           <div
             onClick={() =>
@@ -38,7 +46,7 @@ function Modal({ openModal, setOpenModal }) {
           </div>
         </div>
         <div className="flex flex-col mx-8 mt-8 mb-4 gap-8">
-          {/* Content */}
+          {/* Student */}
           {openModal.formType === "StudentDetail" && (
             <StudentDetail openModal={openModal} setOpenModal={setOpenModal} />
           )}
@@ -48,8 +56,26 @@ function Modal({ openModal, setOpenModal }) {
               setOpenModal={setOpenModal}
             />
           )}
+
+          {/* Teacher */}
+          {openModal.formType === "TeacherDetail" && (
+            <TeacherDetail openModal={openModal} setOpenModal={setOpenModal} />
+          )}
+          {openModal.formType === "EditTeacher" && (
+            <EditTeacherForm
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
+          )}
+          {/* Add Options */}
+          {openModal.formType === "OptionsModal" && (
+            <OptionsModal openModal={openModal} setOpenModal={setOpenModal} />
+          )}
           {openModal.formType === "AddStudent" && (
             <AddStudentForm openModal={openModal} setOpenModal={setOpenModal} />
+          )}
+          {openModal.formType === "AddTeacher" && (
+            <AddTeacherForm openModal={openModal} setOpenModal={setOpenModal} />
           )}
         </div>
       </div>

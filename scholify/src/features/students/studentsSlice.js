@@ -91,6 +91,10 @@ export const studentsSlice = createSlice({
         state.students[index] = updatedStudent;
       }
     },
+    [updateStudentAsync.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.error.message;
+    },
     [deleteStudentAsync.pending]: (state) => {
       state.status = "loading";
     },

@@ -7,7 +7,7 @@ function AddEntry({ setOpenModal }) {
       onClick={() =>
         setOpenModal({
           showModal: true,
-          formType: "AddStudent",
+          formType: "OptionsModal",
         })
       }
       className="flex items-center justify-center gap-1 bg-blue-200 hover:bg-blue-300 px-7 py-4 font-bold text-lg drop-shadow-md cursor-pointer rounded-md"
