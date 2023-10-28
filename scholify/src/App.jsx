@@ -14,6 +14,8 @@ import { fetchStudents } from "./features/students/studentsSlice";
 import { fetchTeachers } from "./features/teachers/teachersSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
   const [openModal, setOpenModal] = useState({
     showModal: false,
     data: null,
@@ -22,8 +24,6 @@ function App() {
 
   const { students } = useSelector((state) => state.students);
   const { teachers } = useSelector((state) => state.teachers);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchStudents());

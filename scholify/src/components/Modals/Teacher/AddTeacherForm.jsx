@@ -58,14 +58,12 @@ function AddTeacherForm({ openModal, setOpenModal }) {
           />
         </div>
       </div>
-      <div className="flex gap-8 mb-4">
-        <div
-          onClick={handleAddTeacher}
-          className="flex items-center justify-center gap-2 bg-green-300 hover:bg-green-400 w-36 py-4 font-bold text-lg drop-shadow-md cursor-pointer rounded-md"
-        >
-          <span>Add</span>
-          <BiCheck className="h-6 w-6" />
-        </div>
+      <div
+        onClick={handleAddTeacher}
+        className="flex items-center justify-center gap-2 bg-green-300 hover:bg-green-400 w-36 py-4 mb-4 font-bold text-lg drop-shadow-md cursor-pointer rounded-md"
+      >
+        <span>Add</span>
+        <BiCheck className="h-6 w-6" />
       </div>
     </div>
   );

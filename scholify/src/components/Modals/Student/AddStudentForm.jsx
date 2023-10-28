@@ -73,7 +73,10 @@ function AddStudentForm({ openModal, setOpenModal }) {
           <input
             value={studentForm.attendance || ""}
             onChange={(e) =>
-              setStudentForm({ ...studentForm, attendance: Number(e.target.value) })
+              setStudentForm({
+                ...studentForm,
+                attendance: Number(e.target.value),
+              })
             }
             className="w-40 px-2 py-1 border-slate-600 border rounded-md"
             type="number"
@@ -88,14 +91,12 @@ function AddStudentForm({ openModal, setOpenModal }) {
           />
         </div>
       </div>
-      <div className="flex gap-8 mb-4">
-        <div
-          onClick={handleUpdateStudent}
-          className="flex items-center justify-center gap-2 bg-green-300 hover:bg-green-400 w-36 py-4 font-bold text-lg drop-shadow-md cursor-pointer rounded-md"
-        >
-          <span>Add</span>
-          <BiCheck className="h-6 w-6" />
-        </div>
+      <div
+        onClick={handleUpdateStudent}
+        className="flex items-center justify-center gap-2 bg-green-300 hover:bg-green-400 w-36 py-4 mb-4 font-bold text-lg drop-shadow-md cursor-pointer rounded-md"
+      >
+        <span>Add</span>
+        <BiCheck className="h-6 w-6" />
       </div>
     </div>
   );
