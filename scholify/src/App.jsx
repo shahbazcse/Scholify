@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStudents } from "./features/students/studentsSlice";
 import { fetchTeachers } from "./features/teachers/teachersSlice";
+import NonDesktopPage from './pages/NonDesktopPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,38 +32,43 @@ function App() {
   }, [dispatch, students, teachers]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <TopNavBar setOpenModal={setOpenModal} />
-      <div className="flex h-[90%] w-full">
-        <div className="w-[20%] ml-8">
-          <LeftNavBar />
-        </div>
-        <div className="w-[80%]">
-          <Routes>
-            <Route
-              path="/"
-              element={<Students setOpenModal={setOpenModal} />}
-            />
-            <Route
-              path="/students"
-              element={<Students setOpenModal={setOpenModal} />}
-            />
-            <Route
-              path="/teachers"
-              element={<Teachers setOpenModal={setOpenModal} />}
-            />
-            <Route
-              path="/class"
-              element={<Class setOpenModal={setOpenModal} />}
-            />
-            <Route path="/school" element={<School />} />
-          </Routes>
-        </div>
-        {openModal.showModal && (
-          <Modal openModal={openModal} setOpenModal={setOpenModal} />
-        )}
+    <>
+      <div className="block xl:hidden h-screen">
+        <NonDesktopPage />
       </div>
-    </div>
+      <div className="hidden xl:flex flex-col justify-center items-center h-screen">
+        <TopNavBar setOpenModal={setOpenModal} />
+        <div className="flex h-[90%] w-full">
+          <div className="w-[20%] ml-8">
+            <LeftNavBar />
+          </div>
+          <div className="w-[80%]">
+            <Routes>
+              <Route
+                path="/"
+                element={<Students setOpenModal={setOpenModal} />}
+              />
+              <Route
+                path="/students"
+                element={<Students setOpenModal={setOpenModal} />}
+              />
+              <Route
+                path="/teachers"
+                element={<Teachers setOpenModal={setOpenModal} />}
+              />
+              <Route
+                path="/class"
+                element={<Class setOpenModal={setOpenModal} />}
+              />
+              <Route path="/school" element={<School />} />
+            </Routes>
+          </div>
+          {openModal.showModal && (
+            <Modal openModal={openModal} setOpenModal={setOpenModal} />
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
