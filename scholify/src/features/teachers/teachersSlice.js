@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API = "https://scholifybackend.shahbazahmad12.repl.co/teachers";
+const API = "https://scholify-backend-xi.vercel.app/teachers";
 
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchTeachers",
